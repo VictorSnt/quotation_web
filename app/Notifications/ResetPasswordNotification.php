@@ -21,7 +21,7 @@ class ResetPasswordNotification extends Notification
 
     public function toMail($notifiable)
     {
-        $url = url('/password/reset/' . $this->token . '?email=' . urlencode($notifiable->email));
+        $url = url('https://grupoconstrufacil.com.br/cotacao/trocar_senha.html?' . $this->token . '&email=' . urlencode($notifiable->email));
 
         return (new MailMessage)
                     ->line('Você está recebendo este email porque recebemos um pedido de recuperação de senha para sua conta.')
