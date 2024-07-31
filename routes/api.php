@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\QuotationSubmissionController;
 use App\Http\Controllers\QuotationSubmissionItemController;
 
@@ -14,6 +16,10 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
+
+
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail']);
+Route::post('password/reset', [ResetPasswordController::class, 'reset']);
 Route::post('users', [UserController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::middleware(['jwt.auth'])->group(function () {
